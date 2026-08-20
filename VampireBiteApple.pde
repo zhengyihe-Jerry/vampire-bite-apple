@@ -5,6 +5,7 @@ void setup() {
 void draw() {
   background(230);
 
+// Vampire
   // Vampire head
   fill(240);
   stroke(0);
@@ -31,4 +32,19 @@ void draw() {
   // Body
   fill(60);
   rect(120, 300, 60, 100);
+
+// Apple
+  //Main part
+  fill(220, 0, 0);
+  stroke(0);
+  ellipse(650, 300, 70, 70);
+
+  // Apple stem
+  stroke(80, 50, 20);
+  line(650, 265, 650, 245);
+  
+  // Apple leaf
+  fill(0, 180, 0);
+  ellipse(665, 250, 25, 12);
+  
 }
