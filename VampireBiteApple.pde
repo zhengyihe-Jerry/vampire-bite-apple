@@ -1,7 +1,12 @@
+//Vampire
 int vampireX = 150;
 int vampireY = 250;
 int speed = 5;
+//Apple
+int appleX = 650;
+int appleY = 300;
 
+int biteCount = 0;
 
 
 void setup() {
@@ -47,7 +52,7 @@ void draw() {
   //Main part
   fill(220, 0, 0);
   stroke(0);
-  ellipse(650, 300, 70, 70);
+  ellipse(appleX, appleY, 70, 70);
 
   // Apple stem
   stroke(80, 50, 20);
@@ -71,9 +76,31 @@ void draw() {
       vampireX += speed;
      }
    }
-
+}
+biteApple();
+fill(0);
+textSize(25);
+text("Bites: " + biteCount, 20, 40);
 }
 
+//Bite
+void biteApple(){
 
+  float distance = dist(
+    vampireX,
+    vampireY,
+    appleX,
+    appleY
+  );
+
+  if(distance < 100){
+
+    if(keyPressed && key == ' '){
+
+      biteCount++;
+
+    }
+
+  }
 
 }
