@@ -1,3 +1,9 @@
+int vampireX = 150;
+int vampireY = 250;
+int speed = 5;
+
+
+
 void setup() {
   size(800, 500);
 }
@@ -9,29 +15,33 @@ void draw() {
   // Vampire head
   fill(240);
   stroke(0);
-  ellipse(150, 250, 80, 100);
+  ellipse(vampireX,vampireY,80,100);
 
   // Vampire hair
   fill(0);
-  arc(150, 225, 80, 60, PI, TWO_PI);
+  arc(vampireX, vampireY - 25, 80, 60, PI, TWO_PI);
 
   // Eyes
   fill(255, 0, 0);
-  ellipse(135, 245, 10, 10);
-  ellipse(165, 245, 10, 10);
+  ellipse(vampireX-15,vampireY-5,10,10);
+  ellipse(vampireX+15,vampireY-5,10,10);
 
   // Mouth
   stroke(0);
-  line(135, 270, 165, 270);
+  line(vampireX-15, vampireY+20,vampireX+15, vampireY+20);
 
   // Fangs
   fill(255);
-  triangle(140, 270, 147, 270, 144, 285);
-  triangle(153, 270, 160, 270, 157, 285);
+  triangle(vampireX - 10, vampireY + 20,
+    vampireX - 3, vampireY + 20,
+    vampireX - 7, vampireY + 35);
+  triangle(vampireX + 3, vampireY + 20,
+    vampireX + 10, vampireY + 20,
+    vampireX + 7, vampireY + 35);
 
   // Body
   fill(60);
-  rect(120, 300, 60, 100);
+  rect(vampireX-30,vampireY+50,60,100);
 
 // Apple
   //Main part
@@ -47,4 +57,19 @@ void draw() {
   fill(0, 180, 0);
   ellipse(665, 250, 25, 12);
   
+  //Vampire Movement
+  if(keyPressed){
+
+  if(keyCode == LEFT){
+    vampireX -= speed;
+  }
+
+  if(keyCode == RIGHT){
+    vampireX += speed;
+  }
+
+}
+
+
+
 }
