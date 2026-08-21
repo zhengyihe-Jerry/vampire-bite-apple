@@ -7,6 +7,7 @@ int appleX = 650;
 int appleY = 300;
 
 int biteCount = 0;
+boolean bitePressed = false;
 
 
 void setup() {
@@ -90,17 +91,19 @@ void biteApple(){
     vampireX,
     vampireY,
     appleX,
-    appleY
-  );
+    appleY);
 
   if(distance < 100){
-
-    if(keyPressed && key == ' '){
-
+    if(bitePressed){
       biteCount++;
-
+      bitePressed = false;
     }
+  }
+}
+void keyPressed(){
 
+  if(key == ' '){
+    bitePressed = true;
   }
 
 }
