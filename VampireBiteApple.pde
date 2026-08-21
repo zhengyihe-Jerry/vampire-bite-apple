@@ -61,12 +61,16 @@ void draw() {
   if(keyPressed){
 
   if(keyCode == LEFT){
-    vampireX -= speed;
-  }
+    if(vampireX > 40){
+      vampireX -= speed;
+     }
+   }
 
   if(keyCode == RIGHT){
-    vampireX += speed;
-  }
+    if(vampireX < width - 40){
+      vampireX += speed;
+     }
+   }
 
 }
 
