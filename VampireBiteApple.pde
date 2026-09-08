@@ -102,6 +102,12 @@ biteApple();
 fill(0);
 textSize(25);
 text("Bites: " + biteCount, 20, 40);
+if(biteCount >= 3){
+  fill(0);
+  textSize(32);
+  text("You ate the apple!", 280, 100);
+}
+
 }
 
 //Bite
