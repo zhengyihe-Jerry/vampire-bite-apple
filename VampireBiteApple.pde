@@ -50,18 +50,38 @@ void draw() {
   rect(vampireX-30,vampireY+50,60,100);
 
 // Apple
-  //Main part
+if(biteCount == 0){
+  // Full apple
   fill(220, 0, 0);
   stroke(0);
   ellipse(appleX, appleY, 70, 70);
+}
+
+else if(biteCount == 1){
+  // Apple becomes smaller after the first bite
+  fill(220, 0, 0);
+  stroke(0);
+  ellipse(appleX, appleY, 55, 55);
+}
+
+else if(biteCount == 2){
+  // Apple becomes even smaller after the second bite
+  fill(220, 0, 0);
+  stroke(0);
+  ellipse(appleX, appleY, 35, 35);
+}
+
+// Only show the stem and leaf while the apple still exists
+if(biteCount < 3){
 
   // Apple stem
   stroke(80, 50, 20);
-  line(650, 265, 650, 245);
-  
+  line(appleX, appleY - 35, appleX, appleY - 55);
+
   // Apple leaf
   fill(0, 180, 0);
-  ellipse(665, 250, 25, 12);
+  ellipse(appleX + 15, appleY - 50, 25, 12);
+}
   
   //Vampire Movement
   if(keyPressed){
@@ -87,17 +107,25 @@ text("Bites: " + biteCount, 20, 40);
 //Bite
 void biteApple(){
 
+  // Calculate the distance between the vampire and the apple
   float distance = dist(
     vampireX,
     vampireY,
     appleX,
     appleY);
 
-  if(distance < 100){
+  // Bite only when the vampire is close and the apple still exists
+  if(distance < 100 && biteCount < 3){
+
     if(bitePressed){
       biteCount++;
       bitePressed = false;
     }
+}
+
+  // Reset the bite input even if the vampire is too far away
+  if(bitePressed && distance >= 100){
+    bitePressed = false;
   }
 }
 void keyPressed(){
