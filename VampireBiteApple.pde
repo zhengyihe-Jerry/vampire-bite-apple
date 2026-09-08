@@ -134,10 +134,22 @@ void biteApple(){
     bitePressed = false;
   }
 }
+
+
 void keyPressed(){
 
   if(key == ' '){
     bitePressed = true;
   }
 
+  if(key == 'r' || key == 'R'){
+    restartGame();
+  }
+}
+//Restart the Game
+void restartGame(){
+  vampireX = 150;
+  vampireY = 250;
+  biteCount = 0;
+  bitePressed = false;
 }
